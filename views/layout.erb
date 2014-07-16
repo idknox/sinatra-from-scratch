@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Email-4-U</title>
+  <link rel="stylesheet" type="text/css"
+        href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
+  <link href="style.css" rel="stylesheet" type="text/css"/>
+  <link rel="shortcut icon" href="images/icon.ico">
+  <script src="https://maps.googleapis.com/maps/api/js"></script>
+  <script>
+    function initialize() {
+      var map_canvas = document.getElementById('map_container');
+      var map_options = {
+        center: new google.maps.LatLng(39.740009, -104.992302),
+        zoom: 11,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+      var map = new google.maps.Map(map_canvas, map_options)
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+</head>
+<body>
+<div class="wrapper">
+  <div id="header">
+    <div id="title">
+      <a href="/" class="link" id="icon">Colorado Sound</a>
+    </div>
+    <div class="container">
+      <% if session[:id] %>
+        <%= yield_content :loggedin %>
+      <% else %>
+        <%= yield_content :loggedout %>
+      <% end %>
+    </div>
+  </div>
+  <div id="nav">
+    <ul>
+      <li><a href="/about" class="link" id="icon">About</a></h2></li>
+      <li><a href="http://blog.ianknox.me" class="link" id="icon">Blog</a></h2></li>
+      <li><a href="" class="link" id="icon">How It Works</a></li>
+    </ul>
+  </div>
+  <div class="content">
+    <div>
+      <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
+    </div>
+    <%= yield_content :main %>
+  </div>
+</body>
+</html>

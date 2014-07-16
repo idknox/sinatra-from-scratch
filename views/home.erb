@@ -1,0 +1,36 @@
+<% content_for :main do %>
+
+  <div>
+    <form method="post" action="/" class="regform">
+      <table>
+        <tbody>
+        <tr>
+          <td>
+            <label for="email">Email</label>
+          </td>
+          <td>
+            <input type="email" name="email" class="fields"/>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="password">Password</label>
+          </td>
+          <td>
+            <input type="password" name="password" class="fields"/>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <button type="submit" class="regbutton">Submit</button>
+      <ul>
+        <li>Emails: </li>
+        <% users.each do |user| %>
+          <li><%= user["email"] %></li>
+        <% end %>
+      </ul>
+    </form>
+  </div>
+
+
+<% end %>

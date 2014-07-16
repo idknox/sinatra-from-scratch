@@ -1,0 +1,7 @@
+idea/
+*.iml
+.bundle/
+*.html
+
+config/database.yml
+.DS_Store
